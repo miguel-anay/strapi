@@ -1,0 +1,27 @@
+services:
+  strapi:
+    build:
+      context: ./my-strapi-project
+      dockerfile: Dockerfile
+    container_name: my-strapi-project
+    restart: unless-stopped
+    env_file:
+      - ./my-strapi-project/.env
+    environment:
+      - HOST=0.0.0.0
+      - PORT=1337
+      - NODE_ENV=development
+    ports:
+      - "1337:1337"
+    volumes:
+      - ./my-strapi-project/config:/opt/app/config
+      - ./my-strapi-project/src:/opt/app/src
+      - ./my-strapi-project/public:/opt/app/public
+      - ./my-strapi-project/.tmp:/opt/app/.tmp
+      - ./my-strapi-project/database:/opt/app/database
+    networks:
+      - strapi-network
+
+networks:
+  strapi-network:
+    driver: bridge

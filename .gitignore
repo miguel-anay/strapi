@@ -1,0 +1,163 @@
+############################
+# Dependencies
+############################
+node_modules/
+my-strapi-project/node_modules/
+
+############################
+# Strapi Generated Files
+############################
+my-strapi-project/.cache/
+my-strapi-project/.tmp/
+my-strapi-project/build/
+my-strapi-project/dist/
+my-strapi-project/.strapi/
+my-strapi-project/.strapi-updater.json
+my-strapi-project/.strapi-cloud.json
+my-strapi-project/exports/
+
+############################
+# Database
+############################
+my-strapi-project/data/
+my-strapi-project/database/migrations/
+my-strapi-project/*.db
+my-strapi-project/*.db-shm
+my-strapi-project/*.db-wal
+*.sqlite
+*.sqlite3
+
+############################
+# Environment Variables (IMPORTANT!)
+############################
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.staging
+my-strapi-project/.env
+my-strapi-project/.env.local
+my-strapi-project/.env.production
+my-strapi-project/.env.staging
+
+# Keep examples
+!.env.example
+!.env.production.example
+!my-strapi-project/.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+.loadpath
+
+############################
+# Docker
+############################
+strapi-data/
+strapi-db/
+
+# Docker volumes (if local)
+postgres-data/
+strapi-uploads/
+
+############################
+# Backups & Exports
+############################
+*.sql
+*.dump
+backups/
+backup-*.sql
+backup-*.tar.gz
+
+############################
+# Uploads (keep in version control by default)
+############################
+# Uncomment if you use S3 or external storage
+# my-strapi-project/public/uploads/*
+# !my-strapi-project/public/uploads/.gitkeep
+
+############################
+# SSL Certificates & Keys
+############################
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+ssl/
+certs/
+
+############################
+# Deployment Files
+############################
+# Uncomment if you don't want to version these
+# transfer-to-ec2.sh
+# deploy-to-ec2.sh
+
+############################
+# Build Artifacts
+############################
+*.tgz
+*.tar.gz
+strapi-deploy*.tar.gz
+strapi-project*.tar.gz
+
+############################
+# Testing
+############################
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+
+############################
+# Temporary Files
+############################
+*.tmp
+*.temp
+.temp/
+.tmp/
+
+############################
+# Package Manager Locks
+############################
+# Uncomment to ignore (not recommended)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+############################
+# Config with Secrets
+############################
+# Uncomment if you have sensitive config files
+# config/production/
+# config/staging/
+# my-strapi-project/config/production/
+# my-strapi-project/config/staging/
