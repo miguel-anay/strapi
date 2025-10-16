@@ -21,6 +21,8 @@ COPY . .
 
 # Build the admin panel
 ENV NODE_ENV=production
+# Increase Node.js memory limit for build
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 RUN npm run build
 
 # Expose Strapi port
