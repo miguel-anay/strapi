@@ -14,10 +14,14 @@ services:
     ports:
       - "1337:1337"
     volumes:
-      - ./my-strapi-project/.tmp:/opt/app/.tmp
-      - ./my-strapi-project/public/uploads:/opt/app/public/uploads
+      - strapi-data:/opt/app/.tmp
+      - strapi-uploads:/opt/app/public/uploads
     networks:
       - strapi-network
+
+volumes:
+  strapi-data:
+  strapi-uploads:
 
 networks:
   strapi-network:
