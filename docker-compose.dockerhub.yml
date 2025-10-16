@@ -1,0 +1,53 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: strapi-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: strapi
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi_password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - strapi-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U strapi"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  strapi:
+    image: k3n5h1n/strapi-blog:latest
+    container_name: my-strapi-project
+    restart: unless-stopped
+    env_file:
+      - ./my-strapi-project/.env
+    environment:
+      - HOST=0.0.0.0
+      - PORT=1337
+      - NODE_ENV=production
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=strapi
+      - DATABASE_USERNAME=strapi
+      - DATABASE_PASSWORD=strapi_password
+      - DATABASE_SSL=false
+    ports:
+      - "1337:1337"
+    volumes:
+      - strapi-uploads:/opt/app/public/uploads
+    networks:
+      - strapi-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+  strapi-uploads:
+
+networks:
+  strapi-network:
+    driver: bridge
