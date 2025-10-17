@@ -24,8 +24,8 @@ COPY . .
 ENV NODE_OPTIONS="--max-old-space-size=2048"
 RUN NODE_ENV=production npm run build
 
-# Set production mode by default
-ENV NODE_ENV=production
+# Set development mode by default
+ENV NODE_ENV=development
 
 # Expose Strapi port
 EXPOSE 1337
