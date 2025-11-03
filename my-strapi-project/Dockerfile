@@ -22,7 +22,7 @@ COPY . .
 # Build the admin panel
 # Increase Node.js memory limit for build
 ENV NODE_OPTIONS="--max-old-space-size=2048"
-RUN NODE_ENV=production npm run build
+RUN NODE_ENV=development npm run build
 
 # Set production mode by default
 ENV NODE_ENV=production

@@ -4,15 +4,28 @@
   "info": {
     "singularName": "inicio",
     "pluralName": "inicios",
-    "displayName": "inicio"
+    "displayName": "Inicio"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "inicio_text": {
-      "type": "richtext"
+    "SITE_TITLE": {
+      "type": "string"
+    },
+    "SITE_DESCRIPTION": {
+      "type": "blocks"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
     }
   }
 }

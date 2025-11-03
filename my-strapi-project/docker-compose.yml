@@ -1,0 +1,23 @@
+services:
+  strapi:
+    image: my-strapi-project:dev
+    container_name: my-strapi-project
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    environment:
+      - HOST=0.0.0.0
+      - PORT=1337
+      - NODE_ENV=development
+      - DATABASE_CLIENT=sqlite
+      - DATABASE_FILENAME=.tmp/data.db
+    ports:
+      - "1337:1337"
+    volumes:
+      - ./.tmp:/opt/app/.tmp
+      - ./public/uploads:/app/public/uploads
+    networks:
+      - strapi-network
+networks:
+  strapi-network:
+    driver: bridge

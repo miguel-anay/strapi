@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_codes",
+  "info": {
+    "displayName": "CODE",
+    "icon": "file"
+  },
+  "options": {},
+  "attributes": {
+    "TYPESCRIPT": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
