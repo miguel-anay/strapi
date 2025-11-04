@@ -1,0 +1,11 @@
+{
+  "name": "strapi-mcp",
+  "version": "1.0.0",
+  "description": "MCP que conecta Claude con la API local de Strapi",
+  "command": "node",
+  "args": ["C:\\strapi\\y\\mcp\\index.js"],
+  "env": {
+    "STRAPI_URL": "http://localhost:1337/api",
+    "STRAPI_TOKEN": "269c220ed3af14b60064457056844d4132f31bb5b0f23566b7d38b68a51c9bf619ae42edef7edb58f99fc2469f90c98819c5932b1b9c6383b49e71e8fea125421c0f29e055d04b967d3f8c8bbf06ebd3f686ad5de01cc807b3a483667f396e5ea7b1f07a41e27d2b67df72e992b75270d9297bd372d277f0e5c10116c8050ab6"
+  }
+}
