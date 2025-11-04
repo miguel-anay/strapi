@@ -72,8 +72,20 @@ Key variables in [my-strapi-project/.env](my-strapi-project/.env):
 - `DATABASE_CLIENT`: Database type (sqlite/postgres/mysql)
 - `APP_KEYS`: Encryption keys for sessions
 - `API_TOKEN_SALT`, `ADMIN_JWT_SECRET`, etc.: Security tokens
+- `PUBLIC_URL`: Public URL for the application (for reverse proxy setup)
+- `ADMIN_COOKIE_SECURE`: Set to `false` when behind a reverse proxy
 
 **Note**: Never commit the `.env` file. Use `.env.example` as a template.
+
+## Reverse Proxy Configuration
+
+This project is configured to work with reverse proxies like nginx-proxy-manager:
+
+- [my-strapi-project/config/server.ts](my-strapi-project/config/server.ts): Has `proxy: true` enabled
+- Cookie security is configurable via `ADMIN_COOKIE_SECURE` environment variable
+- See [PRODUCTION-SETUP.md](PRODUCTION-SETUP.md) for complete nginx-proxy-manager configuration
+
+**Important**: Keep `ADMIN_COOKIE_SECURE=false` when using a reverse proxy to avoid error 500 on login.
 
 ## Technology Stack
 
@@ -105,6 +117,14 @@ Production volumes persist:
 
 ## Deployment to AWS EC2
 
+### Production with Nginx Proxy Manager
+
+For production deployment with reverse proxy (nginx-proxy-manager):
+- See [PRODUCTION-SETUP.md](PRODUCTION-SETUP.md) for complete setup guide
+- Includes nginx-proxy-manager configuration
+- Fixes error 500 on admin login
+- SSL/HTTPS configuration
+
 ### Quick Transfer (if Docker is already installed on EC2)
 
 1. **Edit the transfer script** [transfer-to-ec2.sh](transfer-to-ec2.sh):
@@ -122,12 +142,14 @@ Production volumes persist:
    ssh -i key.pem ubuntu@EC2_IP
    cd ~/my-strapi-project
    nano .env  # Update production secrets
+   # Add: PUBLIC_URL=https://your-domain.com
+   # Add: ADMIN_COOKIE_SECURE=false
    ```
 
 4. **Start Docker Compose**:
    ```bash
    cd ~
-   docker compose -f docker-compose.postgres.yml up -d
+   docker compose up -d --build
    ```
 
 See [QUICK-EC2-DEPLOY.md](QUICK-EC2-DEPLOY.md) for detailed steps.
